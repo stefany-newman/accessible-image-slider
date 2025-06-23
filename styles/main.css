@@ -394,7 +394,7 @@ button{
   margin: 20px;
   max-width: 900px;
   & .gallery-container{
-    border: 5px solid black;
+    border: 5px solid var(--black);
     position: relative;
   }
   & .next, & .prev{
@@ -456,7 +456,7 @@ button{
   }
   .gallery-section {
     & .next, & .prev {
-      fill: currentColor;
+      fill: currentColor; /* Making the arrows visible */ 
     }
   }
 }
