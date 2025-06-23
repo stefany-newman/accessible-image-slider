@@ -388,7 +388,7 @@ button{
   cursor: pointer;
 }
 *:focus{
-  outline: 3px solid var(--forest-green);
+  outline: 3px solid var(--blue);
 }
 .gallery-section{
   margin: 20px;
