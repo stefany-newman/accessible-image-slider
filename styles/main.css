@@ -10,6 +10,9 @@
   --violet-800: #5b21b6;
   --violet-900: #4c1d95;
   
+  --blue: #0976BE;
+  --blue-lighter: #448ec0;
+  
   --sage-green-50: #50C878;
   --mint-green-50: #98FF98;
   --forest-green: #2E6F40;
@@ -376,12 +379,13 @@ img{
 }
 
 button{
-  all:unset;
-  cursor: pointer;
+  background: none;
   border: 1px solid transparent;
-  &:focus{
-    outline: 1px solid var(--forest-green);
-  }
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
 }
 *:focus{
   outline: 3px solid var(--forest-green);
@@ -403,8 +407,9 @@ button{
     fill: var(--white);
     background-color: rgba(0, 0, 0, 0.6);
     &:hover{
+      background-color: var(--black);
       svg{
-        fill: var(--forest-green);
+        fill: var(--blue-lighter);
       }
     }
     & svg{
@@ -418,8 +423,7 @@ button{
 
 .dot-navigation{
   & [aria-current="true"]{
-    background-color: #000;
-    background-blend-mode: revert;
+    background-color: var(--blue);
   }
   & ol{
     list-style-type: none;
@@ -431,7 +435,7 @@ button{
   }
   & .dot{
     border-radius: 50%;
-    border: 1px solid var(--black);
+    border: 14px solid var(--black);
     /* Per WCAG 2.5.8 and 2.5.5 */
     width: 44px; 
     height: 44px;
