@@ -24,9 +24,9 @@ A lightweight, accessible image gallery slider built with **vanilla JavaScript**
 
 ---
 
-## 🔧 Usage
+## Usage
 
-### 1. **HTML**
+### HTML
 ```html
 <div id="gallery-container" class="gallery-container">
   <img src="img1.jpg" alt="Image 1" />
