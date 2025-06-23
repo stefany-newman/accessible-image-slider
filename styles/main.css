@@ -452,4 +452,18 @@ button{
       border-width: 22px;
     }
   }
+  .gallery-section {
+    & .next, & .prev {
+      background-color: var(--black);
+      fill: var(--white);
+    }
+  }
+  @media (prefers-color-scheme: light) {
+    .gallery-section{
+    & .next, & .prev {
+      fill: var(--black);
+      }
+    }
+  }
 }
+
