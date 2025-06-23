@@ -443,10 +443,12 @@ button{
   }
 }
 
-/* Forced Colors Mode */
+/* Forced Colors Mode (FCM) */
 
 @media (forced-colors: active) {
-  /* The currently selected dot fills-in so it's visible */
+  /* The currently selected dot fills itself, in so it's visible,
+     since background-color doesn't show on FCM.
+  */
   .dot-navigation{
     & [aria-current="true"]{
       border-width: 22px;
@@ -454,15 +456,7 @@ button{
   }
   .gallery-section {
     & .next, & .prev {
-      background-color: var(--black);
-      fill: var(--white);
-    }
-  }
-  @media (prefers-color-scheme: light) {
-    .gallery-section{
-    & .next, & .prev {
-      fill: var(--black);
-      }
+      fill: currentColor;
     }
   }
 }
