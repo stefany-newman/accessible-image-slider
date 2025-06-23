@@ -443,3 +443,13 @@ button{
   }
 }
 
+/* Forced Colors Mode */
+
+@media (forced-colors: active) {
+  /* The currently selected dot fills-in so it's visible */
+  .dot-navigation{
+    & [aria-current="true"]{
+      border-width: 22px;
+    }
+  }
+}
