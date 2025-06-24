@@ -2,7 +2,7 @@
 const dots = document.querySelectorAll(".dot");
 const dotsParent = document.querySelector("#dot-navigation");
 const imagesNodeList = document.querySelectorAll(".gallery-image");
-const galleryImagesArray = Array.from(document.querySelectorAll(".gallery-image"));
+const galleryImagesArray = Array.from(imagesNodeList);
 const nextPrevControls = document.querySelector("#next-prev-controls");
 
 const numberOfImages = galleryImagesArray.length; // Default is 4
