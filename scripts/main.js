@@ -1,28 +1,25 @@
 /* Gallery */
 const dots = document.querySelectorAll(".dot");
 const dotsParent = document.querySelector("#dot-navigation");
+const imagesNodeList = document.querySelectorAll(".gallery-image");
 const galleryImagesArray = Array.from(document.querySelectorAll(".gallery-image"));
 const nextPrevControls = document.querySelector("#next-prev-controls");
 
 const numberOfImages = galleryImagesArray.length; // Default is 4
 
 /* Functions */ 
-const activate = (index, type) => {
-    if(type === "image")
-    {
-        document.querySelectorAll(".gallery-image")[index].toggleAttribute("hidden");
-    }
-    if(type === "dot")
-    {
-        dots[index].setAttribute("aria-current", "true");
-    }
+
+const activateImage = (imagesNodeList, index) => {
+    imagesNodeList[index].toggleAttribute("hidden");
+};
+const activateDot = (dotsNodeList, index) => {
+    dotsNodeList[index].setAttribute("aria-current", "true");
 };
 const deactivateDot = (dot) => {
     dot.setAttribute("aria-current", "false");
 };
 const deactivateImage = (image) => {
     image.toggleAttribute("hidden");
-
 }; 
 
 nextPrevControls.addEventListener("click", (e) => {
@@ -66,8 +63,8 @@ nextPrevControls.addEventListener("click", (e) => {
         */
         deactivateDot(activeDot);
         deactivateImage(currentImageElement);
-        activate(differentImageIndex, "image");
-        activate(differentImageIndex, "dot");
+        activateImage(imagesNodeList, differentImageIndex);
+        activateDot(dots, differentImageIndex);
     }
 });
 
@@ -90,7 +87,7 @@ dotsParent.addEventListener("click", (e) => {
         */
             deactivateDot(activeDot);
             deactivateImage(currentImageElement);
-            activate(nextDotIndex, "image");
-            activate(nextDotIndex, "dot");
+            activateImage(imagesNodeList, nextDotIndex);
+            activateDot(dots, nextDotIndex);
         }
 });
