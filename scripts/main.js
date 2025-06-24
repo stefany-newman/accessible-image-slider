@@ -26,6 +26,10 @@ const deactivateImage = (image) => {
 }; 
 
 nextPrevControls.addEventListener("click", (e) => {
+    /*
+       Since listener is attached on the parent of the next & prev buttons, 
+       we want to check when the user actually clicks the buttons, not their parent.
+    */
     const isAButtonClicked = (e.target.tagName === "BUTTON") ? true : false;
     if(isAButtonClicked) {
     /* 
@@ -35,10 +39,6 @@ nextPrevControls.addEventListener("click", (e) => {
     const currentImageElement = document.querySelector("img:not([hidden])"); // The only image without a "hidden" attribute.
     const activeDot = document.querySelector(".dot[aria-current='true'"); // The only dot with aria-current=true
     let currentImageIndex = galleryImagesArray.findIndex(image => !image.hidden);
-    /*
-       Since we placed the listener on the parent of the next & prev buttons, 
-       we want to check when the user actually clicks the buttons, not their parent.
-    */
     const buttonType = (type) => (type === e.target.id); // Next or prev button?
     const switchImageIndex = (type) => {
         if(type === "next"){
@@ -59,6 +59,11 @@ nextPrevControls.addEventListener("click", (e) => {
         }
     };
         let differentImageIndex = (buttonType("next")) ? switchImageIndex("next") : switchImageIndex("prev");
+        /*
+            Every time another image is selected, the folowing must happen:
+            - Current dots and images are de-activated, visually and programmatically. 
+            - The new dots and images are activated, visually and programmatically. 
+        */
         deactivateDot(activeDot);
         deactivateImage(currentImageElement);
         activate(differentImageIndex, "image");
@@ -67,16 +72,25 @@ nextPrevControls.addEventListener("click", (e) => {
 });
 
 dotsParent.addEventListener("click", (e) => {
-    let isDotClicked = e.target;
-    if(!isDotClicked.classList.contains("dot")){
-        return;
-    }  
-    const activeDot = document.querySelector(".dot[aria-current='true'");
-    const currentImageElement = document.querySelector("img:not([hidden])");
-    const dotsArray = Array.from(dots);
-    let nextDotIndex = dotsArray.findIndex(dot => dot === isDotClicked);
-        deactivateDot(activeDot);
-        deactivateImage(currentImageElement);
-        activate(nextDotIndex, "image");
-        activate(nextDotIndex, "dot");
+    /*
+       Since listener is attached on the parent of the dots, 
+       we want to check when the user actually clicks the dots, and not
+       the gap between them, or the padding around them.
+    */
+    let isDotClicked = (e.target.classList.contains("dot")) ? true : false;
+    if(isDotClicked){
+        let clickedDot = e.target; // The user the user clicked
+        // Getting the current and visible dot and image 
+        const activeDot = document.querySelector(".dot[aria-current='true'");
+        const currentImageElement = document.querySelector("img:not([hidden])");
+        const dotsArray = Array.from(dots); // Convert the dots to an array so we can use findIndex on them
+        let nextDotIndex = dotsArray.findIndex(dot => dot === clickedDot); // Find the index of the dot clicked
+        /*
+            Change the visible image and activate the clicked dot    
+        */
+            deactivateDot(activeDot);
+            deactivateImage(currentImageElement);
+            activate(nextDotIndex, "image");
+            activate(nextDotIndex, "dot");
+        }
 });
