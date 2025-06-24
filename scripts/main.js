@@ -26,6 +26,8 @@ const deactivateImage = (image) => {
 }; 
 
 nextPrevControls.addEventListener("click", (e) => {
+    const isAButtonClicked = (e.target.tagName === "BUTTON") ? true : false;
+    if(isAButtonClicked) {
     /* 
         We fetch the current image and dot each time the function is invoked, since the
         the current ones rotate, when the user invokes the function.
@@ -37,7 +39,6 @@ nextPrevControls.addEventListener("click", (e) => {
        Since we placed the listener on the parent of the next & prev buttons, 
        we want to check when the user actually clicks the buttons, not their parent.
     */
-    const isAButtonClicked = (e.target.tagName === "BUTTON") ? true : false;
     const buttonType = (type) => (type === e.target.id); // Next or prev button?
     const switchImageIndex = (type) => {
         if(type === "next"){
@@ -57,14 +58,12 @@ nextPrevControls.addEventListener("click", (e) => {
             return (currentImageIndex > 0) ? --currentImageIndex : (numberOfImages -1);
         }
     };
-    if(isAButtonClicked) {
         let differentImageIndex = (buttonType("next")) ? switchImageIndex("next") : switchImageIndex("prev");
         deactivateDot(activeDot);
         deactivateImage(currentImageElement);
         activate(differentImageIndex, "image");
         activate(differentImageIndex, "dot");
     }
-
 });
 
 dotsParent.addEventListener("click", (e) => {
