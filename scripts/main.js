@@ -5,6 +5,8 @@ const dots = document.querySelectorAll('.dot');
 const dotsParent = document.querySelector("#dot-navigation");
 const numberOfImages = galleryImagesArray.length;
 
+const test = '';
+
 dotsParent.addEventListener("click", (e) => {
     let isDotClicked = e.target;
     if(!isDotClicked.classList.contains("dot")){
@@ -60,4 +62,4 @@ const deactivateDot = (dot) => {
 const deactivateImage = (image) => {
         image.toggleAttribute("hidden");
 
-};
+}; 
