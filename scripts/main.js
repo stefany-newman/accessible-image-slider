@@ -1,7 +1,7 @@
 /* Gallery */
-const nextPrevControls = document.querySelector('#next-prev-controls');
-const galleryImagesArray = Array.from(document.querySelectorAll('.gallery-image'));
-const dots = document.querySelectorAll('.dot');
+const nextPrevControls = document.querySelector("#next-prev-controls");
+const galleryImagesArray = Array.from(document.querySelectorAll(".gallery-image"));
+const dots = document.querySelectorAll(".dot");
 const dotsParent = document.querySelector("#dot-navigation");
 const numberOfImages = galleryImagesArray.length;
 
@@ -9,7 +9,7 @@ dotsParent.addEventListener("click", (e) => {
     let isDotClicked = e.target;
     if(!isDotClicked.classList.contains("dot")){
         return;
-    }
+    }  
     const activeDot = document.querySelector(".dot[aria-current='true'");
     const currentImageElement = document.querySelector("img:not([hidden])");
     const dotsArray = Array.from(dots);
@@ -55,9 +55,9 @@ const activate = (index, type) => {
     }
 };
 const deactivateDot = (dot) => {
-        dot.setAttribute("aria-current", "false");
+    dot.setAttribute("aria-current", "false");
 };
 const deactivateImage = (image) => {
-        image.toggleAttribute("hidden");
+    image.toggleAttribute("hidden");
 
 }; 
