@@ -422,6 +422,7 @@ button{
 }
 
 .dot-navigation{
+  /* Change background color of the currently active dot */ 
   & [aria-current="true"]{
     background-color: var(--blue);
   }
